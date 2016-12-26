@@ -5,7 +5,7 @@ git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
     echo "Building version ${v}"
   }
   def mvnHome = tool 'M3'
-  ba "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
+  bat "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
   step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
   step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
 }
